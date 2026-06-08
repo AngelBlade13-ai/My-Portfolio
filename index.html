@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bladen McKinlay - Software Developer</title>
+<meta name="description" content="Junior Software Developer skilled in React, Node.js, Express, and MongoDB. Full-stack portfolio including deployed web applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #09090f;
+    --bg2:       #111118;
+    --bg3:       #18181f;
+    --border:    #2a2a35;
+    --text:      #ddd8ce;
+    --muted:     #7a7870;
+    --gold:      #c8a84b;
+    --gold-dim:  #8a7030;
+    --blue:      #5b9bd5;
+    --ff-head:   'Fraunces', Georgia, serif;
+    --ff-body:   'IBM Plex Sans', sans-serif;
+    --ff-mono:   'IBM Plex Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--ff-body);
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* -- layout -- */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+  /* -- nav -- */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(9,9,15,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+  }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  .nav-name { font-family: var(--ff-mono); font-size: .85rem; color: var(--gold); letter-spacing: .05em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .85rem; letter-spacing: .03em; transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* -- hero -- */
+  #hero {
+    padding: 7rem 0 5rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,168,75,.07), transparent);
+    pointer-events: none;
+  }
+  .hero-label { font-family: var(--ff-mono); font-size: .78rem; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.2rem; }
+  h1 {
+    font-family: var(--ff-head);
+    font-size: clamp(2.8rem, 7vw, 4.8rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -.02em;
+    color: var(--text);
+    margin-bottom: 1.4rem;
+  }
+  h1 em { font-style: italic; font-weight: 300; color: var(--gold); }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: .6rem 1.4rem;
+    border-radius: 3px;
+    font-family: var(--ff-mono);
+    font-size: .82rem;
+    letter-spacing: .04em;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-primary { background: var(--gold); color: #09090f; }
+  .btn-primary:hover { background: #deba5c; }
+  .btn-outline { border: 1px solid var(--border); color: var(--muted); }
+  .btn-outline:hover { border-color: var(--gold-dim); color: var(--text); }
+
+  /* -- sections -- */
+  section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  .section-label { font-family: var(--ff-mono); font-size: .75rem; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .8rem; }
+  h2 { font-family: var(--ff-head); font-size: 2rem; font-weight: 600; letter-spacing: -.01em; margin-bottom: 2rem; }
+
+  /* -- about -- */
+  .about-text { font-size: 1.05rem; color: var(--muted); max-width: 640px; line-height: 1.8; }
+  .about-text strong { color: var(--text); font-weight: 500; }
+
+  /* -- skills -- */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.2rem; }
+  .skill-group {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+  }
+  .skill-group h3 {
+    font-family: var(--ff-mono);
+    font-size: .73rem;
+    color: var(--gold);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: .8rem;
+  }
+  .skill-group ul { list-style: none; }
+  .skill-group li { font-size: .9rem; color: var(--muted); padding: .18rem 0; }
+  .skill-group li::before { content: '- '; color: var(--border); }
+
+  /* -- projects -- */
+  .project { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 2.4rem; margin-bottom: 2rem; transition: border-color .3s; }
+  .project:hover { border-color: var(--gold-dim); }
+  .project-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+  .project-title { font-family: var(--ff-head); font-size: 1.55rem; font-weight: 600; letter-spacing: -.01em; }
+  .project-links { display: flex; gap: .7rem; flex-shrink: 0; }
+  .project-links a {
+    font-family: var(--ff-mono); font-size: .75rem; letter-spacing: .04em;
+    padding: .35rem .85rem; border-radius: 3px; text-decoration: none;
+    border: 1px solid var(--border); color: var(--muted); transition: all .2s;
+  }
+  .project-links a:hover { border-color: var(--gold-dim); color: var(--text); }
+  .project-links a.live { background: var(--gold); border-color: var(--gold); color: #09090f; }
+  .project-links a.live:hover { background: #deba5c; }
+  .project-desc { color: var(--muted); font-size: .97rem; margin-bottom: 1.4rem; line-height: 1.75; }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.6rem; }
+  .tag {
+    font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .04em;
+    padding: .25rem .7rem; border-radius: 3px;
+    background: var(--bg3); border: 1px solid var(--border); color: var(--muted);
+  }
+  .project-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+  @media (max-width: 600px) { .project-details { grid-template-columns: 1fr; } }
+  .detail-block h4 {
+    font-family: var(--ff-mono); font-size: .72rem; color: var(--gold);
+    letter-spacing: .1em; text-transform: uppercase; margin-bottom: .6rem;
+  }
+  .detail-block ul { list-style: none; }
+  .detail-block li { font-size: .9rem; color: var(--muted); padding: .22rem 0; line-height: 1.55; padding-left: 1rem; position: relative; }
+  .detail-block li::before { content: '->'; position: absolute; left: 0; color: var(--gold-dim); font-size: .8rem; top: .3rem; }
+
+  /* -- contact -- */
+  .contact-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .contact-item { font-family: var(--ff-mono); font-size: .85rem; }
+  .contact-item span { color: var(--muted); display: block; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .3rem; }
+  .contact-item a { color: var(--text); text-decoration: none; transition: color .2s; }
+  .contact-item a:hover { color: var(--gold); }
+
+  /* -- footer -- */
+  footer { padding: 2rem 0; text-align: center; }
+  footer p { font-family: var(--ff-mono); font-size: .75rem; color: var(--border); letter-spacing: .06em; }
+
+  /* -- fade in -- */
+  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 640px) {
+    nav .nav-links { gap: 1.2rem; }
+    #hero { padding: 4rem 0 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-name">bladen.mckinlay</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="container">
+    <p class="hero-label">Portfolio - Software Developer</p>
+    <h1>Bladen McKinlay<br><em>builds for the web.</em></h1>
+    <p class="hero-sub">Full-stack developer completing a Software Development program at Tooele Technical College. I design, build, test, and ship - from React front ends to Express APIs and MongoDB databases.</p>
+    <div class="hero-links">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="https://github.com/AngelBlade13-ai" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="mailto:bladenmckinlay@gmail.com" class="btn btn-outline">Email Me</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container fade-in">
+    <p class="section-label">Background</p>
+    <h2>About Me</h2>
+    <p class="about-text">
+      I'm a junior software developer based in <strong>Tooele, UT</strong>, currently completing a Software Development certificate at Tooele Technical College - with plans to continue toward an associate's degree at Snow College and a bachelor's at the University of Utah. Before software, I spent four years in logistics and delivery work, where I learned that reliability and attention to detail aren't optional.
+      <br><br>
+      I build full-stack JavaScript applications and care deeply about the whole product - not just the feature, but how it's secured, tested, deployed, and maintained. My flagship project, Suno Diary, is a live MERN-stack application with JWT authentication, automated testing, CI/CD, and an integrated AI assistant.
+    </p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container fade-in">
+    <p class="section-label">Technical Proficiencies</p>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <ul>
+          <li>JavaScript (ES6+)</li>
+          <li>Python</li>
+          <li>HTML5</li>
+          <li>CSS3 / SCSS</li>
+          <li>C# (in progress)</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Front End</h3>
+        <ul>
+          <li>React / JSX</li>
+          <li>Vite</li>
+          <li>Responsive design</li>
+          <li>REST API integration</li>
+          <li>Accessible markup</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Back End</h3>
+        <ul>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>MongoDB / Atlas</li>
+          <li>REST API design</li>
+          <li>JWT & bcrypt auth</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Testing & DevOps</h3>
+        <ul>
+          <li>Playwright (E2E)</li>
+          <li>Unit & API tests</li>
+          <li>GitHub Actions CI</li>
+          <li>ESLint / Prettier</li>
+          <li>DevOps (upcoming)</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Deployment & Cloud</h3>
+        <ul>
+          <li>Vercel</li>
+          <li>Render</li>
+          <li>MongoDB Atlas</li>
+          <li>Cloudinary</li>
+          <li>GitHub Pages</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Tools & Workflow</h3>
+        <ul>
+          <li>Git / GitHub</li>
+          <li>VS Code</li>
+          <li>Ollama (local AI)</li>
+          <li>AI-assisted dev</li>
+          <li>Agile / Scrum</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container fade-in">
+    <p class="section-label">Selected Work</p>
+    <h2>Projects</h2>
+
+    <!-- PROJECT 1: SUNO DIARY -->
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">Suno Diary</h3>
+        <div class="project-links">
+          <a href="https://react-final-project-seven-sigma.vercel.app" target="_blank" class="live">Live Demo (external)</a>
+          <a href="https://github.com/AngelBlade13-ai/Suno-Diary-Portfolio" target="_blank">GitHub (external)</a>
+        </div>
+      </div>
+      <p class="project-desc">A full-stack music archive and curated listening experience for AI-generated music. The public site lets users browse a catalog, explore themed story worlds, follow guided listening paths, and leave comments. The admin side handles full content management, comment moderation, catalog health monitoring, and an AI assistant that reviews the catalog and returns structured suggestions for human review.</p>
+      <div class="tech-tags">
+        <span class="tag">React</span><span class="tag">Vite</span><span class="tag">Node.js</span>
+        <span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">JWT</span>
+        <span class="tag">bcrypt</span><span class="tag">Helmet.js</span><span class="tag">Playwright</span>
+        <span class="tag">GitHub Actions</span><span class="tag">Vercel</span><span class="tag">Render</span>
+        <span class="tag">Cloudinary</span><span class="tag">Ollama</span>
+      </div>
+      <div class="project-details">
+        <div class="detail-block">
+          <h4>Role &amp; Scope</h4>
+          <ul>
+            <li>Sole developer across the full stack - architecture, UI, API, database, security, testing, and deployment</li>
+            <li>212+ commits over the course of development</li>
+            <li>Designed the data model, REST API, and React component structure from scratch</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <h4>Challenges &amp; Solutions</h4>
+          <ul>
+            <li>Implemented real auth security (JWT + bcrypt + Helmet + rate limiting) to protect both admin and user routes without a framework doing it automatically</li>
+            <li>Integrated an Ollama-based AI assistant with strict prompt engineering and structured JSON output, then built a human-in-the-loop review UI so suggestions are never applied automatically</li>
+            <li>Built a three-tier testing pipeline (unit, API, and Playwright end-to-end) and wired it into GitHub Actions CI so every push is verified before it can ship</li>
+            <li>Coordinated a split deployment across Vercel (frontend) and Render (backend) with MongoDB Atlas, managing environment configuration, health checks, and CORS across all three</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: NODEJS FINAL PROJECT -->
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">Movie Search Database</h3>
+        <div class="project-links">
+          <a href="https://github.com/AngelBlade13-ai/NodeJS--Final-Project" target="_blank">GitHub (external)</a>
+        </div>
+      </div>
+      <p class="project-desc">A server-rendered movie search application built with Node.js, Express, EJS, MongoDB, and the TMDB API. Users can register, log in, search movies, view movie details, save favorites, and access protected profile/admin areas through session-based authentication.</p>
+      <div class="tech-tags">
+        <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">EJS</span>
+        <span class="tag">MongoDB</span><span class="tag">Mongoose</span><span class="tag">bcrypt</span>
+        <span class="tag">Express Session</span><span class="tag">TMDB API</span><span class="tag">MVC</span>
+      </div>
+      <div class="project-details">
+        <div class="detail-block">
+          <h4>Role &amp; Scope</h4>
+          <ul>
+            <li>Built a full Express MVC-style app with routes, controllers, models, EJS views, and static assets</li>
+            <li>Implemented user registration, login, logout, profile access, and protected movie/favorites routes</li>
+            <li>Connected MongoDB models for users and saved favorites while consuming TMDB as the external movie data source</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <h4>Challenges &amp; Solutions</h4>
+          <ul>
+            <li>Used bcrypt password hashing and Express sessions so user accounts and route access are handled server-side</li>
+            <li>Protected movie search, movie detail, favorites, profile, and admin routes with authentication middleware</li>
+            <li>Integrated the TMDB API from the server, including clear error states when an API key or search term is missing</li>
+            <li>Stored favorites by user ID so each logged-in user sees their own saved movie list instead of a shared global list</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: SONG CATALOG IMPORT ASSISTANT -->
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">Song Catalog Import Assistant</h3>
+        <div class="project-links">
+          <a href="https://github.com/user-attachments/assets/08f4f6a1-d0f7-4dd7-a36a-ef8a4ff5b844" target="_blank">Demo Video</a>
+          <a href="https://github.com/AngelBlade13-ai/song-catalog-import-assistant" target="_blank">GitHub (external)</a>
+        </div>
+      </div>
+      <p class="project-desc">A standalone Python workflow tool that prepares song metadata for import into the Suno Diary music archive. It reads existing catalog data and new song batches from JSON, normalizes titles and slugs, detects likely duplicates, maps records into the website's post schema, and exports review-ready reports before anything is applied.</p>
+      <div class="tech-tags">
+        <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">JSON</span>
+        <span class="tag">CLI Tools</span><span class="tag">Cloudinary</span><span class="tag">pytest</span>
+        <span class="tag">Data Validation</span><span class="tag">Duplicate Detection</span>
+      </div>
+      <div class="project-details">
+        <div class="detail-block">
+          <h4>Role &amp; Scope</h4>
+          <ul>
+            <li>Sole developer of a real support tool for the Suno Diary content pipeline</li>
+            <li>Built both command-line and browser-assisted workflows for importing and reviewing song data</li>
+            <li>Designed modular processing around validation, normalization, duplicate checking, mapping, export, and website integration</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <h4>Challenges &amp; Solutions</h4>
+          <ul>
+            <li>Prevented messy catalog imports by blocking likely duplicates using exact slug, version-family, and fuzzy title signals</li>
+            <li>Generated website-ready JSON and Markdown review reports so content can be checked before it reaches the live catalog</li>
+            <li>Added safe website integration with backup files, merged preview output, optional reseeding, and live-store verification</li>
+            <li>Covered the core behavior with pytest tests for slug normalization, duplicate detection, input validation, website mapping, and lyrics merge logic</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4: FINANCE TRACKER -->
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">Finance Tracker</h3>
+        <div class="project-links">
+          <a href="https://github.com/AngelBlade13-ai/nextjs-expense-tracker" target="_blank">GitHub (external)</a>
+        </div>
+      </div>
+      <p class="project-desc">A personal finance dashboard built with Next.js and Firebase. Users can sign in with Google, track income, organize expenses into categories, delete entries, and view a balance calculated from income minus expenses using user-specific Firestore data.</p>
+      <div class="tech-tags">
+        <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Firebase</span>
+        <span class="tag">Firestore</span><span class="tag">Firebase Auth</span><span class="tag">Tailwind CSS</span>
+        <span class="tag">React Context</span><span class="tag">React Toastify</span>
+      </div>
+      <div class="project-details">
+        <div class="detail-block">
+          <h4>Role &amp; Scope</h4>
+          <ul>
+            <li>Built the app as a full Next.js and Firebase project with authenticated, user-specific data</li>
+            <li>Created modal-driven workflows for adding income, creating expense categories, and adding expense items</li>
+            <li>Used context-based state management for authentication and finance data across the dashboard</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <h4>Challenges &amp; Solutions</h4>
+          <ul>
+            <li>Connected Google sign-in through Firebase Authentication and filtered Firestore records by the signed-in user's uid</li>
+            <li>Structured Firestore collections for income and expense categories while keeping dashboard totals responsive to data changes</li>
+            <li>Included Firestore security rules so users can only read and modify documents that belong to their own account</li>
+            <li>Added toast notifications and responsive layout behavior to make success and error states visible during normal use</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 5: NEXTHAUL SHOPPING APP -->
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">NextHaul Shopping App</h3>
+        <div class="project-links">
+          <a href="https://github.com/AngelBlade13-ai/React--Redux-Shopping-Application" target="_blank">GitHub (external)</a>
+        </div>
+      </div>
+      <p class="project-desc">A React and Strapi e-commerce demo with product browsing, product detail pages, category filtering, a Redux-powered cart, contact flow, and checkout behavior that can run against Stripe test checkout or a mock demo mode.</p>
+      <div class="tech-tags">
+        <span class="tag">React</span><span class="tag">Redux</span><span class="tag">Strapi</span>
+        <span class="tag">Stripe</span><span class="tag">REST APIs</span><span class="tag">SCSS</span>
+        <span class="tag">SQLite</span><span class="tag">Create React App</span>
+      </div>
+      <div class="project-details">
+        <div class="detail-block">
+          <h4>Role &amp; Scope</h4>
+          <ul>
+            <li>Built a storefront experience with reusable components for navigation, product cards, cart, categories, footer, and contact page</li>
+            <li>Configured a Strapi backend with product, category, sub-category, and order content types</li>
+            <li>Added fallback product data so the storefront can still render useful content when API data is unavailable</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <h4>Challenges &amp; Solutions</h4>
+          <ul>
+            <li>Managed cart state with Redux, including item quantities, subtotal calculation, and checkout actions</li>
+            <li>Created resilient product fetching that can handle Strapi responses or local fallback catalog data</li>
+            <li>Added configurable checkout behavior so the project supports both real Stripe test flow and a mock classroom demo path</li>
+            <li>Documented environment variables, Strapi setup, seed scripts, permissions, build commands, and test commands for repeatable setup</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container fade-in">
+    <p class="section-label">Get In Touch</p>
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="mailto:bladenmckinlay@gmail.com">bladenmckinlay@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span>GitHub</span>
+        <a href="https://github.com/AngelBlade13-ai" target="_blank">github.com/AngelBlade13-ai</a>
+      </div>
+      <div class="contact-item">
+        <span>Live Portfolio</span>
+        <a href="https://react-final-project-seven-sigma.vercel.app" target="_blank">Suno Diary (live project)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>BLADEN MCKINLAY &nbsp;-&nbsp; SOFTWARE DEVELOPER &nbsp;-&nbsp; TOOELE, UT</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
+
+
