@@ -57,12 +57,6 @@ index.html   # Static portfolio page
 README.md    # Repository and assignment explanation
 ```
 
-## How To View Locally
-
-Open `index.html` directly in a browser.
-
-No build step is required because this is a static HTML/CSS/JavaScript page.
-
 ## Live Site
 
 Deployed portfolio:
