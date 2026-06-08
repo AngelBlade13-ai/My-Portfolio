@@ -61,9 +61,9 @@ README.md    # Repository and assignment explanation
 
 Deployed portfolio:
 
-```text
-Add GitHub Pages link here after deployment.
-```
+
+https://angelblade13-ai.github.io/My-Portfolio/
+
 
 ## Why This Exists
 
