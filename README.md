@@ -63,22 +63,12 @@ Open `index.html` directly in a browser.
 
 No build step is required because this is a static HTML/CSS/JavaScript page.
 
-## GitHub Pages Setup
+## Live Site
 
-After pushing this repository to GitHub:
-
-1. Open the repository on GitHub.
-2. Go to `Settings`.
-3. Go to `Pages`.
-4. Under `Build and deployment`, choose `Deploy from a branch`.
-5. Select the `main` branch.
-6. Select `/ (root)` as the folder.
-7. Save.
-
-GitHub will publish the portfolio at a URL similar to:
+Deployed portfolio:
 
 ```text
-https://AngelBlade13-ai.github.io/<repo-name>/
+Add GitHub Pages link here after deployment.
 ```
 
 ## Why This Exists
